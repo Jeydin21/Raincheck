@@ -1,15 +1,32 @@
+import { useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
+  const [city, setCity] = useState('');
+  const router = useRouter();
+
+  const handleInputChange = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/weather?city=${city}`);
+  };
+
   return (
     <>
       <Head>
         <title>SkibidiWeather</title>
-        <meta name="description" content="Get real-time weather information for any location in the world." />
+        <meta name="description" content="Get real-time weather information for any location in the world" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-700 via-gray-900 to-gray-950">
+      <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
         <main className="text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
             Welcome to SkibidiWeather
@@ -18,16 +35,24 @@ export default function Home() {
             Get real-time weather updates for any location worldwide
           </p>
 
-          <div className="flex justify-center mb-8">
-            <input
-              type="text"
-              placeholder="Enter a city name"
-              className="px-4 py-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-l-md outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out"
-            />
-            <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700  font-semibold rounded-r-md transition duration-200 ease-in-out">
-              Check Weather
-            </button>
-          </div>
+          <form onSubmit={handleSubmit} className="flex justify-center mb-8">
+            <div className="flex w-full max-w-sm items-center space-x-2">
+              <Input
+                className="px-4 py-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-l-md outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out"
+                type="text"
+                placeholder="Enter a city name..."
+                value={city}
+                onChange={handleInputChange}
+                required
+              />
+              <Button
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 font-semibold rounded-r-md transition duration-200 ease-in-out"
+                type="submit"
+              >
+                Search
+              </Button>
+            </div>
+          </form>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 mx-5">
             <div className="p-6 bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
@@ -39,21 +64,17 @@ export default function Home() {
             <div className="p-6 bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
               <h3 className="text-xl font-semibold text-glow text-blue-400 mb-2">5-Day Forecast</h3>
               <p className="text-gray-300">
-                Plan ahead with our 5-day weather forecast feature
+                Get a 5-day weather forecast for your location
               </p>
             </div>
             <div className="p-6 bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
-              <h3 className="text-xl font-semibold text-glow text-blue-400 mb-2">Location Detection</h3>
+              <h3 className="text-xl font-semibold text-glow text-blue-400 mb-2">Modernized User Interface</h3>
               <p className="text-gray-300">
-                Get weather info based on your current location instantly
+                A sleek and modern UI for a better user experience
               </p>
             </div>
           </div>
         </main>
-
-        <footer className="w-full py-6 mt-12 text-center text-gray-400">
-          <p>&copy; 2024 SkibidiWeather | Built with Next.js and Tailwind CSS</p>
-        </footer>
       </div>
     </>
   );
