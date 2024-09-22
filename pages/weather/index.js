@@ -53,7 +53,7 @@ export default function Dashboard() {
                   Description: {weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1)}
                 </p>
                 <p className="text-lg md:text-xl text-gray-300 mb-12">
-                  Temperature: {(weatherData.main.temp - 273.15).toFixed(2)}°C
+                  Temperature: {((weatherData.main.temp - 273.15) * 9/5 + 32).toFixed(2)}°F
                 </p>
                 <p className="text-lg md:text-xl text-gray-300 mb-12">
                   Humidity: {weatherData.main.humidity}%
