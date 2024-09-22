@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
+      <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-700 via-gray-900 to-gray-950">
         <main className="text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
             Welcome to SkibidiWeather
@@ -29,7 +29,7 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 mx-5">
             <div className="p-6 bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
               <h3 className="text-xl font-semibold text-glow text-blue-400 mb-2">Real-Time Data</h3>
               <p className="text-gray-300">
