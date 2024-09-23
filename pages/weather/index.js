@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Skeleton } from "@/components/ui/skeleton";
+import { getWeatherCity } from '@/src/currentWeather';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -16,9 +17,7 @@ export default function Dashboard() {
   }, [city]);
 
   const fetchWeatherData = async (city) => {
-    const API_KEY = "e9932fef01ccc58b35eb088057a50cf2";
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
-    const data = await response.json();
+    const data = await getWeatherCity(city);
     setWeatherData(data);
     setLoading(false);
   };
@@ -26,11 +25,11 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>SkibidiWeather - {city}</title>
+        <title>SkibidiWeather</title>
       </Head>
       <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
         <main className="text-center">
-          <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-20 shadow-lg">
+          <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-20 shadow-lg m-5">
             <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
               {loading ? (
                 <Skeleton className="h-20 w-[300px] mb-12" />

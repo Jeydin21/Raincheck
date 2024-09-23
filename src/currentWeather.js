@@ -1,6 +1,5 @@
-const fetch = require('node-fetch');
-
-const API_KEY = "e9932fef01ccc58b35eb088057a50cf2";
+require('dotenv').config();
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const baseURL = `https://api.openweathermap.org/data/2.5/weather`;
 
 const getWeatherCity = async (cityName) => {
@@ -14,6 +13,6 @@ const getWeatherCity = async (cityName) => {
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
   }
-}
+};
 
 module.exports = { getWeatherCity };
