@@ -8,4 +8,4 @@ In this project, I will be using the [Next.js framework](https://nextjs.org/) to
 This project will also have me handle data from the backend, which is data from the [OpenWeather API](https://openweathermap.org/api).
 
 This is just a sketch, but this is what I want the weather dashboard to look like when I'm finished:
-![Dashboard Picture](https://i.postimg.cc/FHsxWSfh/Untitled.png)
+![](./public/layout.png)
