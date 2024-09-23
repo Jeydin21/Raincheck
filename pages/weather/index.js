@@ -28,9 +28,16 @@ export default function Dashboard() {
         <title>SkibidiWeather</title>
       </Head>
 
-      <body className="text-[#F2F2F2] h-screen bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
-        <main className="flex flex-row">
-          <CityCard weatherData={weatherData} loading={loading} />
+      <body className="text-[#F2F2F2] h-max bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
+        <main className="flex flex-row justify-evenly">
+          <div className="flex flex-col">
+            <CityCard weatherData={weatherData} loading={loading} />
+            <CityCard weatherData={weatherData} loading={loading} />
+          </div>
+          <div className="flex flex-col">
+            <CityCard weatherData={weatherData} loading={loading} />
+            <CityCard weatherData={weatherData} loading={loading} />
+          </div>
         </main>
       </body>
     </>
