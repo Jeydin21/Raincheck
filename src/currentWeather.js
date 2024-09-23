@@ -4,7 +4,7 @@ const baseURL = `https://api.openweathermap.org/data/2.5/weather`;
 
 const getWeatherCity = async (cityName) => {
   try {
-    const response = await fetch(`${baseURL}?q=${cityName}&appid=${API_KEY}`);
+    const response = await fetch(`${baseURL}?q=${cityName}&units=imperial&appid=${API_KEY}`);
     if (!response.ok) {
       throw new Error('Network response was not OK: ' + response.statusText);
     }

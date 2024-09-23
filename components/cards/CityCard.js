@@ -1,4 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { capitalizeFirstLetter, degreeToDirection } from "@/lib/utils";
 
 function CityCard({ weatherData, loading }) {
   return (
@@ -19,21 +20,21 @@ function CityCard({ weatherData, loading }) {
         </>
       ) : (
         <>
-          <p className="text-lg md:text-4xl text-gray-300 mb-6">
+          <p className="text-lg md:text-4xl text-gray-300 mb-6 flex items-center font-bold">
             <img
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-              alt={weatherData.weather[0].description}
+              alt={capitalizeFirstLetter(weatherData.weather[0].description)}
               className="inline-block w-12 h-12"
             />
-            {((weatherData.main.temp - 273.15) * 9 / 5 + 32).toFixed(0)}°F
+            {weatherData.main.temp.toFixed(0)}°F
           </p>
           <p className="text-lg md:text-xl text-gray-300">
-            Feels like {((weatherData.main.feels_like - 273.15) * 9 / 5 + 32).toFixed(0)}°F
+            Feels like {weatherData.main.feels_like.toFixed(0)}°F
           </p>
           <p className="text-lg md:text-xl text-gray-300 mb-6">
             {weatherData.weather.map((desc, index) => (
               <span key={index}>
-                {desc.description.charAt(0).toUpperCase() + desc.description.slice(1)}
+                {capitalizeFirstLetter(desc.description)}
                 {index < weatherData.weather.length - 1 && ', '}
               </span>
             ))}
@@ -41,10 +42,13 @@ function CityCard({ weatherData, loading }) {
           <div className="flex flex-row space-x-5 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg">
             <div className="flex flex-col justify-center space-y-10">
               <p className="text-lg md:text-xl text-gray-300">
+                Wind Speed: {weatherData.wind.speed}mph {degreeToDirection(weatherData.wind.deg)}
+              </p>
+              <p className="text-lg md:text-xl text-gray-300">
                 Humidity: {weatherData.main.humidity}%
               </p>
               <p className="text-lg md:text-xl text-gray-300">
-                Wind Speed: {weatherData.wind.speed} m/s
+                  Visibility: {(weatherData.visibility / 1000).toFixed(1)}km
               </p>
             </div>
             <div className="flex flex-col justify-center space-y-10">
