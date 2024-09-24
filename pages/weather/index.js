@@ -27,19 +27,23 @@ export default function Dashboard() {
       <Head>
         <title>SkibidiWeather</title>
       </Head>
-
-      <body className="text-[#F2F2F2] h-max bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
-        <main className="flex flex-row justify-evenly">
-          <div className="flex flex-col">
-            <CityCard weatherData={weatherData} loading={loading} />
+  
+      <div className="text-[#F2F2F2] min-h-screen bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
+        <main className="grid grid-cols-2 grid-rows-2 gap-4 h-full p-4">
+          <div className="flex justify-center items-center h-full">
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
-          <div className="flex flex-col">
+          <div className="flex justify-center items-center h-full">
             <CityCard weatherData={weatherData} loading={loading} />
+          </div>
+          <div className="flex justify-center items-center h-full">
+            <CityCard weatherData={weatherData} loading={loading} />
+          </div>
+          <div className="flex justify-center items-center h-full">
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
         </main>
-      </body>
+      </div>
     </>
   );
 }

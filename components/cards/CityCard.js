@@ -3,7 +3,7 @@ import { capitalizeFirstLetter, degreeToDirection } from "@/lib/utils";
 
 function CityCard({ weatherData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg m-5 max-h-full">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg m-5 max-h-[50vh] w-full h-full">
       <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
         {loading ? (
           <Skeleton className="h-20 w-[300px] mb-12" />
@@ -41,7 +41,7 @@ function CityCard({ weatherData, loading }) {
           </p>
           <div className="flex flex-row space-x-10 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg">
             <div className="flex flex-col justify-center space-y-10">
-            <p className="text-lg md:text-xl text-gray-300">
+              <p className="text-lg md:text-xl text-gray-300">
                 Coordinates: ({weatherData.coord.lon}, {weatherData.coord.lat})
               </p>
               <p className="text-lg md:text-xl text-gray-300">
@@ -66,7 +66,7 @@ function CityCard({ weatherData, loading }) {
         </>
       )}
     </div>
-  )
+  );
 }
 
 export { CityCard };
