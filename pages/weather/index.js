@@ -1,13 +1,21 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+
 import { getWeatherCity } from '@/src/currentWeather';
 import { CityCard } from '@/components/cards/CityCard';
+
+import { getForecastCity } from '@/src/forecastWeather';
+import { DailyCard } from '@/components/cards/dailyCard';
+
+import { MapCard } from '@/components/cards/MapCard';
+import { WeeklyCard } from '@/components/cards/weeklyCard';
 
 export default function Dashboard() {
   const router = useRouter();
   const { city } = router.query;
   const [weatherData, setWeatherData] = useState(null);
+  const [dailyData, setDailyData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,8 +25,10 @@ export default function Dashboard() {
   }, [city]);
 
   const fetchWeatherData = async (city) => {
-    const data = await getWeatherCity(city);
-    setWeatherData(data);
+    const weatherData = await getWeatherCity(city);
+    const dailyData = await getForecastCity(city);
+    setWeatherData(weatherData);
+    setDailyData(dailyData);
     setLoading(false);
   };
 
@@ -34,13 +44,13 @@ export default function Dashboard() {
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <CityCard weatherData={weatherData} loading={loading} />
+            <MapCard mapData={dailyData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <CityCard weatherData={weatherData} loading={loading} />
+            <DailyCard dailyData={weatherData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <CityCard weatherData={weatherData} loading={loading} />
+            <WeeklyCard weeklyData={weatherData} loading={loading} />
           </div>
         </main>
       </div>
