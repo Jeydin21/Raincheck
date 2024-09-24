@@ -6,10 +6,10 @@ import { getWeatherCity } from '@/src/currentWeather';
 import { CityCard } from '@/components/cards/CityCard';
 
 import { getForecastCity } from '@/src/forecastWeather';
-import { DailyCard } from '@/components/cards/dailyCard';
+import { DailyCard } from '@/components/cards/DailyCard';
 
 import { MapCard } from '@/components/cards/MapCard';
-import { WeeklyCard } from '@/components/cards/weeklyCard';
+import { WeeklyCard } from '@/components/cards/WeeklyCard';
 
 export default function Dashboard() {
   const router = useRouter();
