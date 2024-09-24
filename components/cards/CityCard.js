@@ -3,7 +3,7 @@ import { capitalizeFirstLetter, degreeToDirection } from "@/lib/utils";
 
 function CityCard({ weatherData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg m-5 max-h-[50vh] w-full h-full">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg max-h-[50vh] w-full h-full">
       <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
         {loading ? (
           <Skeleton className="h-20 w-[300px] mb-12" />
@@ -20,7 +20,7 @@ function CityCard({ weatherData, loading }) {
         </>
       ) : (
         <>
-          <p className="text-lg md:text-4xl text-gray-300 mb-6 flex items-center font-bold">
+          <p className="text-lg md:text-4xl text-gray-300 mb-2 flex items-center font-bold">
             <img
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               alt={capitalizeFirstLetter(weatherData.weather[0].description)}
@@ -31,7 +31,7 @@ function CityCard({ weatherData, loading }) {
           <p className="text-lg md:text-xl text-gray-300">
             Feels like {weatherData.main.feels_like.toFixed(0)}°F
           </p>
-          <p className="text-lg md:text-xl text-gray-300 mb-6">
+          <p className="text-lg md:text-xl text-gray-300 mb-2">
             {weatherData.weather.map((desc, index) => (
               <span key={index}>
                 {capitalizeFirstLetter(desc.description)}
@@ -40,7 +40,7 @@ function CityCard({ weatherData, loading }) {
             ))}
           </p>
           <div className="flex flex-row space-x-10 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg">
-            <div className="flex flex-col justify-center space-y-10">
+            <div className="flex flex-col justify-center space-y-5">
               <p className="text-lg md:text-xl text-gray-300">
                 Coordinates: ({weatherData.coord.lon}, {weatherData.coord.lat})
               </p>
@@ -51,7 +51,7 @@ function CityCard({ weatherData, loading }) {
                 Humidity: {weatherData.main.humidity}%
               </p>
             </div>
-            <div className="flex flex-col justify-center space-y-10">
+            <div className="flex flex-col justify-center space-y-5">
               <p className="text-lg md:text-xl text-gray-300">
                 Visibility: {(weatherData.visibility / 1000).toFixed(1)}km
               </p>
