@@ -1,21 +1,68 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import Select from 'react-select';
+import { getLocations, getWeatherCity } from '@/src/meteosource';
 
 export default function Home() {
   const [city, setCity] = useState('');
+  const [options, setOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [debounceTimeout, setDebounceTimeout] = useState(null);
   const router = useRouter();
 
-  const handleInputChange = (e) => {
-    setCity(e.target.value);
+  useEffect(() => {
+    const fetchLocations = async () => {
+      if (inputValue.length > 2) {
+        const locations = await getLocations(inputValue);
+        const formattedOptions = locations.slice(0, 5).map(location => ({
+          value: location.place_id,
+          label: `${location.name}, ${location.country}`
+        }));
+        setOptions(formattedOptions);
+      }
+    };
+
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout);
+    }
+
+    const timeout = setTimeout(() => {
+      fetchLocations();
+    }, 500); // Adjust the delay as needed
+
+    setDebounceTimeout(timeout);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [inputValue]);
+
+  const handleInputChange = (newValue) => {
+    setInputValue(newValue);
   };
 
-  const handleSubmit = (e) => {
+  const handleChange = (selectedOption) => {
+    setCity(selectedOption);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    router.push(`/weather?city=${city}`);
+    if (city) {
+      try {
+        const weatherData = await getWeatherCity(city.value, 'current');
+        if (weatherData) {
+          router.push({
+            pathname: '/weather',
+            query: { city: city.value }
+          });
+        } else {
+          console.error('Weather data is undefined');
+        }
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    }
   };
 
   return (
@@ -37,20 +84,20 @@ export default function Home() {
 
           <form onSubmit={handleSubmit} className="flex justify-center mb-8">
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
-                className="px-4 py-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-l-md outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out"
-                type="text"
+              <Select
+                className="w-full text-black"
                 placeholder="Enter a city name..."
-                value={city}
-                onChange={handleInputChange}
-                required
+                onInputChange={handleInputChange}
+                onChange={handleChange}
+                options={options}
+                isClearable
               />
-              <Button
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 font-semibold rounded-r-md transition duration-200 ease-in-out"
+              <button
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 font-semibold rounded-md transition duration-200 ease-in-out"
                 type="submit"
               >
                 Search
-              </Button>
+              </button>
             </div>
           </form>
 
