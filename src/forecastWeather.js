@@ -1,5 +1,5 @@
 require('dotenv').config();
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_ACCUWEATHER_API_KEY;
 const baseURL = `https://api.openweathermap.org/data/2.5/forecast`;
 
 const getForecastCity = async (cityName) => {
