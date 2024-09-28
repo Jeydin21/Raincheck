@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>SkibidiWeather</title>
+        <title>Raincheck ☔</title>
         <meta name="description" content="Get real-time weather information for any location in the world" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -76,7 +76,7 @@ export default function Home() {
       <div className="text-[#F2F2F2] min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
         <main className="text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
-            Welcome to SkibidiWeather
+            Welcome to Raincheck ☔
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-12">
             Get real-time weather updates for any location worldwide

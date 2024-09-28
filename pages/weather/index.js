@@ -35,7 +35,7 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>SkibidiWeather</title>
+        <title>Raincheck ☔</title>
       </Head>
   
       <div className="text-[#F2F2F2] min-h-screen bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">

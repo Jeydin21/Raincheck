@@ -1,5 +1,5 @@
-# SkibidiWeather
-SkibidiWeather is a small web app that utilizes the OpenWeather API to display historical as well as future weather data in any location in the world.
+# Raincheck ☔
+Raincheck ☔ is a small web app that utilizes the OpenWeather API to display historical as well as future weather data in any location in the world.
 
 The aim of this project is to hone my front-end dev skills and visualization of modern interfaces.
 
