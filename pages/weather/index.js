@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-import { getWeatherCity } from '@/src/currentWeather';
+import { getWeatherCity } from '@/src/openweather';
 import { CityCard } from '@/components/cards/CityCard';
 
-import { getForecastCity } from '@/src/forecastWeather';
+import { getForecastCity } from '@/src/meteosource';
 import { DailyCard } from '@/components/cards/DailyCard';
 
 import { MapCard } from '@/components/cards/MapCard';
@@ -25,8 +25,8 @@ export default function Dashboard() {
   }, [city]);
 
   const fetchWeatherData = async (city) => {
-    const weatherData = await getWeatherCity(city);
-    const dailyData = await getForecastCity(city);
+    const weatherData = await getWeatherCity(city, "current");
+    const dailyData = await getWeatherCity(city, "daily");
     setWeatherData(weatherData);
     setDailyData(dailyData);
     setLoading(false);
