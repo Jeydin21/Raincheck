@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { getOpenWeatherCity, getOpenForecastCity } from '@/src/openweather';
+import { getWeatherCity } from '@/src/meteosource';
 
-import { getWeatherCity } from '@/src/openweather';
 import { CityCard } from '@/components/cards/CityCard';
 
-import { getForecastCity } from '@/src/meteosource';
 import { DailyCard } from '@/components/cards/DailyCard';
 
 import { MapCard } from '@/components/cards/MapCard';
+
 import { WeeklyCard } from '@/components/cards/WeeklyCard';
 
 export default function Dashboard() {
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const { city } = router.query;
   const [weatherData, setWeatherData] = useState(null);
   const [dailyData, setDailyData] = useState(null);
+  const [weeklyData, setWeeklyData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,10 +27,12 @@ export default function Dashboard() {
   }, [city]);
 
   const fetchWeatherData = async (city) => {
-    const weatherData = await getWeatherCity(city, "current");
-    const dailyData = await getWeatherCity(city, "daily");
+    const weatherData = await getOpenWeatherCity(city);
+    const dailyData = await getWeatherCity(city, "hourly");
+    const weeklyData = await getWeatherCity(city, "daily");
     setWeatherData(weatherData);
     setDailyData(dailyData);
+    setWeeklyData(weeklyData);
     setLoading(false);
   };
 
@@ -47,10 +51,10 @@ export default function Dashboard() {
             <MapCard mapData={dailyData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <DailyCard dailyData={weatherData} loading={loading} />
+            <DailyCard dailyData={dailyData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <WeeklyCard weeklyData={weatherData} loading={loading} />
+            <WeeklyCard weeklyData={weeklyData} loading={loading} />
           </div>
         </main>
       </div>

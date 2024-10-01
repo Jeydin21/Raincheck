@@ -2,7 +2,7 @@ require('dotenv').config();
 const API_KEY = process.env.NEXT_PUBLIC_ACCUWEATHER_API_KEY;
 const baseURL = `https://api.openweathermap.org/data/2.5`;
 
-const getWeatherCity = async (cityName) => {
+const getOpenWeatherCity = async (cityName) => {
   try {
     const response = await fetch(`${baseURL}/weather?q=${cityName}&units=imperial&appid=${API_KEY}`);
     if (!response.ok) {
@@ -15,7 +15,7 @@ const getWeatherCity = async (cityName) => {
   }
 };
 
-const getForecastCity = async (cityName) => {
+const getOpenForecastCity = async (cityName) => {
   try {
     const response = await fetch(`${baseURL}/forecast?q=${cityName}&units=imperial&appid=${API_KEY}`);
     if (!response.ok) {
@@ -28,4 +28,4 @@ const getForecastCity = async (cityName) => {
   }
 };
 
-module.exports = { getWeatherCity, getForecastCity };
+module.exports = { getOpenWeatherCity, getOpenForecastCity };
