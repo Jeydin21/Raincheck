@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { getOpenWeatherCity } from '@/src/openweather';
+import { getOpenWeatherCity, getOpenWeatherMap } from '@/src/openweather';
 import { getWeatherCity } from '@/src/meteosource';
 
 import { CityCard } from '@/components/cards/CityCard';
@@ -30,6 +30,7 @@ export default function Dashboard() {
     const weeklyData = await getWeatherCity(city, "daily");
     setWeatherData(weatherData);
     setDailyData(dailyData);
+    setMapData(weatherData.coord.lon, weatherData.coord.lat);
     setWeeklyData(weeklyData);
     setLoading(false);
   };

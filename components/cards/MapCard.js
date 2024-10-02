@@ -8,7 +8,8 @@ function MapCard({ mapData, loading }) {
       ) : (
         <h1 className="text-5xl md:text-2xl font-extrabold text-glow mb-6">
           Map Card
-        </h1>
+          </h1>
+          
       )}
     </div>
   );
