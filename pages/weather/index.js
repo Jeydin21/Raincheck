@@ -1,15 +1,12 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { getOpenWeatherCity, getOpenForecastCity } from '@/src/openweather';
+import { getOpenWeatherCity } from '@/src/openweather';
 import { getWeatherCity } from '@/src/meteosource';
 
 import { CityCard } from '@/components/cards/CityCard';
-
 import { DailyCard } from '@/components/cards/DailyCard';
-
 import { MapCard } from '@/components/cards/MapCard';
-
 import { WeeklyCard } from '@/components/cards/WeeklyCard';
 
 export default function Dashboard() {
@@ -18,6 +15,7 @@ export default function Dashboard() {
   const [weatherData, setWeatherData] = useState(null);
   const [dailyData, setDailyData] = useState(null);
   const [weeklyData, setWeeklyData] = useState(null);
+  const [mapData, setMapData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export default function Dashboard() {
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <MapCard mapData={dailyData} loading={loading} />
+            <MapCard mapData={mapData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
             <DailyCard dailyData={dailyData} loading={loading} />

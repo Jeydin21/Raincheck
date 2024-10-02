@@ -2,6 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { HourlyCard } from "@/components/small-components/HourlyCard";
 
 function DailyCard({ dailyData, loading }) {
+  const currentTimeString = new Date().toLocaleString("en-US", { timeZone: dailyData.timezone });
+
   return (
     <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg max-h-[50vh] w-full h-full">
       {loading ? (
@@ -11,12 +13,14 @@ function DailyCard({ dailyData, loading }) {
           <h1 className="md:text-2xl font-extrabold text-glow mb-6">
             Hourly Forecast
           </h1>
-          <div className="flex overflow-x-auto space-x-4">
+          <div className="flex overflow-x-auto">
             {dailyData.hourly.data.map((data, index) => (
               <HourlyCard
                 key={index}
+                time={data.date}
                 icon={data.icon}
                 temp={data.temperature}
+                currentTime={currentTimeString}
               />
             ))}
           </div>

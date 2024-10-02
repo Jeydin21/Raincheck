@@ -11,7 +11,7 @@ function WeeklyCard({ weeklyData, loading }) {
           <h1 className="md:text-2xl font-extrabold text-glow mb-6">
             Weekly Forecast
           </h1>
-          <div className="flex overflow-x-auto space-x-4">
+          <div className="flex overflow-x-auto">
             {weeklyData.daily.data.map((data, index) => (
               <DailyCard
                 key={index}
