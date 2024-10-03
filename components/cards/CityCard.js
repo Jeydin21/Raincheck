@@ -1,5 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { capitalizeFirstLetter, degreeToDirection } from "@/lib/utils";
+import Image from "next/image";
 
 function CityCard({ weatherData, loading }) {
   return (
@@ -21,10 +22,12 @@ function CityCard({ weatherData, loading }) {
       ) : (
         <>
           <p className="text-lg md:text-4xl text-gray-300 mb-2 flex items-center font-bold">
-            <img
+            <Image
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               alt={capitalizeFirstLetter(weatherData.weather[0].description)}
-              className="inline-block w-12 h-12"
+              width={48}
+              height={48}
+              className="inline-block"
             />
             {weatherData.main.temp.toFixed(0)}°F
           </p>

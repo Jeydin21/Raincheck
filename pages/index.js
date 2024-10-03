@@ -36,7 +36,7 @@ export default function Home() {
     return () => {
       clearTimeout(timeout);
     };
-  }, [inputValue]);
+  }, [inputValue, debounceTimeout]);
 
   const handleInputChange = (newValue) => {
     setInputValue(newValue);

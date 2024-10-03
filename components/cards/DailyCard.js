@@ -8,7 +8,7 @@ function DailyCard({ dailyData, loading }) {
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (
         <>
-          <h1 className="md:text-2xl font-extrabold text-glow mb-6">
+          <h1 className="md:text-2xl font-extrabold text-glow mb-1">
             Hourly Forecast
           </h1>
           <div className="flex overflow-x-auto select-none">

@@ -8,16 +8,18 @@ function WeeklyCard({ weeklyData, loading }) {
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (
         <>
-          <h1 className="md:text-2xl font-extrabold text-glow mb-6">
+          <h1 className="md:text-2xl font-extrabold text-glow mb-1">
             Weekly Forecast
           </h1>
-          <div className="flex overflow-x-auto">
+          <div className="flex flex-col overflow-auto select-none">
             {weeklyData.daily.data.map((data, index) => (
               <DailyCard
                 key={index}
+                date={data.day}
                 icon={data.icon}
                 highTemp={data.all_day.temperature_max}
                 lowTemp={data.all_day.temperature_min}
+                summary={data.summary}
               />
             ))}
           </div>

@@ -6,10 +6,12 @@ function MapCard({ mapData, loading }) {
       {loading ? (
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (
-        <h1 className="text-5xl md:text-2xl font-extrabold text-glow mb-6">
-          Map Card
+        <>
+          <h1 className="text-5xl md:text-2xl font-extrabold text-glow mb-2">
+            Extra Card
           </h1>
-          
+          <p className="text-sm">On my life bro I could not figure out how to work the map with OpenWeather API free tier</p>
+        </>
       )}
     </div>
   );
