@@ -4,9 +4,8 @@ import Image from "next/image";
 
 function CityCard({ weatherData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center" title={`Coordinates: (${weatherData.coord.lon}, ${weatherData.coord.lat})`}>
       <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
-        {/* title={`Coordinates: (${weatherData.coord.lon}, ${weatherData.coord.lat})`} */}
         {loading ? (
           <Skeleton className="h-20 w-[300px] mb-12" />
         ) : (
@@ -24,7 +23,7 @@ function CityCard({ weatherData, loading }) {
         </>
       ) : (
         <>
-          <p className="text-lg md:text-4xl text-gray-300 mb-2 flex items-center font-bold max-lg:flex max-lg:justify-center max-lg:items-center">
+          <p className="text-2xl md:text-4xl text-gray-300 lg:mb-2 flex items-center font-bold max-lg:flex max-lg:justify-center max-lg:items-center">
             <Image
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               alt={capitalizeFirstLetter(weatherData.weather[0].description)}
@@ -42,11 +41,11 @@ function CityCard({ weatherData, loading }) {
               </span>
             ))}
           </p>
-          <div className="text-lg md:text-xl flex flex-row space-x-3 text-gray-300 mb-2 max-lg:text-center">
-            <div className="text-md text-gray-300">
+          <div className="text-lg md:text-xl flex flex-row space-x-3 text-gray-300 mb-2 max-lg:justify-center max-lg:text-center">
+            <div className="text-md text-gray-300 font-bold">
               H:{weatherData.main.temp_max.toFixed(0)}°
             </div>
-            <div className="text-md text-gray-300">
+            <div className="text-md text-gray-300 font-bold">
               L:{weatherData.main.temp_min.toFixed(0)}°
             </div>
           </div>
