@@ -3,7 +3,7 @@ import { DailyCard } from "@/components/small-components/DailyCard";
 
 function WeeklyCard({ weeklyData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg max-h-[50vh] w-full h-full overflow-hidden">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden">
       {loading ? (
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (

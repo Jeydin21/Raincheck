@@ -42,7 +42,7 @@ export default function Dashboard() {
       </Head>
 
       <div className="text-[#F2F2F2] min-h-screen bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-950">
-        <main className="grid grid-cols-2 grid-rows-2 gap-4 h-screen p-4">
+        <main className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 h-full lg:h-screen p-4">
           <div className="flex justify-center items-center h-full">
             <CityCard weatherData={weatherData} loading={loading} />
           </div>

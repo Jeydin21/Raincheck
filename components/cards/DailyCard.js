@@ -3,7 +3,7 @@ import { HourlyCard } from "@/components/small-components/HourlyCard";
 
 function DailyCard({ dailyData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg max-h-[50vh] w-full h-full">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full">
       {loading ? (
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (
