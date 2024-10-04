@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function CityCard({ weatherData, loading }) {
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center" title={`Coordinates: (${weatherData.coord.lon}, ${weatherData.coord.lat})`}>
-      <h1 className="text-5xl md:text-6xl font-extrabold text-glow mb-6">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center">
+      <h1 className="text-3xl lg:text-5xl xl:text-6xl font-extrabold text-glow mb-6">
         {loading ? (
           <Skeleton className="h-20 w-[300px] mb-12" />
         ) : (
