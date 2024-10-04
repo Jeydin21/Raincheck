@@ -5,7 +5,7 @@ import Image from "next/image";
 function CityCard({ weatherData, loading }) {
   return (
     <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center">
-      <h1 className="text-3xl lg:text-5xl xl:text-6xl font-extrabold text-glow mb-6">
+      <h1 className="text-5xl xl:text-6xl font-extrabold text-glow mb-6">
         {loading ? (
           <Skeleton className="h-20 w-[300px] mb-12" />
         ) : (
@@ -23,7 +23,7 @@ function CityCard({ weatherData, loading }) {
         </>
       ) : (
         <>
-          <p className="text-2xl md:text-4xl text-gray-300 lg:mb-2 flex items-center font-bold max-lg:flex max-lg:justify-center max-lg:items-center">
+          <p className="text-4xl text-gray-300 lg:mb-2 flex items-center font-bold max-lg:flex max-lg:justify-center max-lg:items-center">
             <Image
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               alt={capitalizeFirstLetter(weatherData.weather[0].description)}

@@ -39,7 +39,7 @@ function DailyCard({ dailyData, loading }) {
   };
 
   return (
-    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg w-full h-full">
+    <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg w-full h-full overflow-hidden">
       {loading ? (
         <Skeleton className="h-20 w-[300px] mb-12" />
       ) : (
@@ -47,7 +47,7 @@ function DailyCard({ dailyData, loading }) {
           <h1 className="md:text-2xl font-extrabold text-glow mb-1">
             Hourly Forecast
           </h1>
-          <div className="w-full h-64">
+          <div className="w-full h-52">
             <Line data={chartData} options={chartOptions} />
           </div>
           <div className="flex overflow-x-auto select-none">
