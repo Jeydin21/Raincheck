@@ -48,7 +48,7 @@ export default function Dashboard() {
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <AirCard mapData={airData} loading={loading} />
+            <AirCard airData={airData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
             <DailyCard dailyData={dailyData} loading={loading} />

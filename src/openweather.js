@@ -18,7 +18,7 @@ const getOpenWeatherCity = async (cityName) => {
 const getAirPollution = async (cityName) => {
   try {
     const cityLocation = await getCityLocation(cityName);
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${cityLocation[0].lat}&lon=${cityLocation[0].lon}&appid=${API_KEY}`);
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${cityLocation[0].lat}&lon=${cityLocation[0].lon}&appid=${API_KEY}`);
     if (!response.ok) {
       throw new Error('Network response was not OK: ' + response.statusText);
     }
