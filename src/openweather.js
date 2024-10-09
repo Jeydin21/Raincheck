@@ -15,9 +15,10 @@ const getOpenWeatherCity = async (cityName) => {
   }
 };
 
-const getOpenWeatherMap = async (longitude, latitude) => {
+const getAirPollution = async (cityName) => {
   try {
-    const response = await fetch(`${baseURL}/maps/2.0/weather/PR0/8/${longitude}/${latitude}?appid=${API_KEY}`);
+    const cityLocation = await getCityLocation(cityName);
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${cityLocation[0].lat}&lon=${cityLocation[0].lon}&appid=${API_KEY}`);
     if (!response.ok) {
       throw new Error('Network response was not OK: ' + response.statusText);
     }
@@ -26,6 +27,19 @@ const getOpenWeatherMap = async (longitude, latitude) => {
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
   }
-}
+};
 
-module.exports = { getOpenWeatherCity, getOpenWeatherMap };
+const getCityLocation = async (cityName) => {
+  try {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Network response was not OK: ' + response.statusText);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);
+  }
+};
+
+module.exports = { getOpenWeatherCity, getAirPollution, getCityLocation };

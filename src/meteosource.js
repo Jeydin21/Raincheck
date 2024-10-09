@@ -1,7 +1,7 @@
 // meteosource.js
 require('dotenv').config();
 const API_KEY = process.env.NEXT_PUBLIC_METEOSOURCE_API_KEY;
-const baseURL = `https://www.meteosource.com/api/v1/free`;
+const baseURL = `https://www.meteosource.com/api/v1`;
 
 /* Sections:
 current: Current weather situation
@@ -16,7 +16,7 @@ all: All the above sections
 
 const getWeatherCity = async (cityId, sections) => {
   try {
-    const response = await fetch(`${baseURL}/point?place_id=${cityId}&sections=${sections}&timezone=auto&language=en&units=us&key=${API_KEY}`);
+    const response = await fetch(`${baseURL}/free/point?place_id=${cityId}&sections=${sections}&timezone=auto&language=en&units=us&key=${API_KEY}`);
     if (!response.ok) {
       throw new Error('Network response was not OK: ' + response.statusText);
     }
@@ -29,7 +29,7 @@ const getWeatherCity = async (cityId, sections) => {
 
 const getLocations = async (query) => {
   try {
-    const response = await fetch(`${baseURL}/find_places?text=${query}&key=${API_KEY}`);
+    const response = await fetch(`${baseURL}/free/find_places?text=${query}&key=${API_KEY}`);
     if (!response.ok) {
       throw new Error('Network response was not OK: ' + response.statusText);
     }

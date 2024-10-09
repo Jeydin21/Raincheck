@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { getOpenWeatherCity, getOpenWeatherMap } from '@/src/openweather';
+import { getOpenWeatherCity, getAirPollution } from '@/src/openweather';
 import { getWeatherCity } from '@/src/meteosource';
 
 import { CityCard } from '@/components/cards/CityCard';
 import { DailyCard } from '@/components/cards/DailyCard';
-import { MapCard } from '@/components/cards/MapCard';
+import { AirCard } from '@/components/cards/AirCard';
 import { WeeklyCard } from '@/components/cards/WeeklyCard';
 
 export default function Dashboard() {
@@ -15,7 +15,7 @@ export default function Dashboard() {
   const [weatherData, setWeatherData] = useState(null);
   const [dailyData, setDailyData] = useState(null);
   const [weeklyData, setWeeklyData] = useState(null);
-  const [mapData, setMapData] = useState(null);
+  const [airData, setAirData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,9 +28,10 @@ export default function Dashboard() {
     const weatherData = await getOpenWeatherCity(city);
     const dailyData = await getWeatherCity(city, "hourly");
     const weeklyData = await getWeatherCity(city, "daily");
+    const airData = await getAirPollution(city);
     setWeatherData(weatherData);
     setDailyData(dailyData);
-    setMapData(weatherData.coord.lon, weatherData.coord.lat);
+    setAirData(airData);
     setWeeklyData(weeklyData);
     setLoading(false);
   };
@@ -47,7 +48,7 @@ export default function Dashboard() {
             <CityCard weatherData={weatherData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
-            <MapCard mapData={mapData} loading={loading} />
+            <AirCard mapData={airData} loading={loading} />
           </div>
           <div className="flex justify-center items-center h-full">
             <DailyCard dailyData={dailyData} loading={loading} />
