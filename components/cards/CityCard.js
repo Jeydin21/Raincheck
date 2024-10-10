@@ -7,19 +7,23 @@ function CityCard({ weatherData, loading }) {
     <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg lg:max-h-[50vh] w-full h-full overflow-hidden max-lg:text-center">
       <h1 className="text-5xl xl:text-6xl font-extrabold text-glow mb-6">
         {loading ? (
-          <Skeleton className="h-20 w-[300px] mb-12" />
+          <Skeleton className="h-16 w-1/2 mb-6" />
         ) : (
           <>{`${weatherData.name}, ${weatherData.sys.country}`}</>
         )}
       </h1>
       {loading ? (
         <>
-          <Skeleton className="h-6 w-[300px] mb-12" />
-          <Skeleton className="h-6 w-[300px] mb-12" />
-          <Skeleton className="h-6 w-[300px] mb-12" />
-          <Skeleton className="h-6 w-[300px] mb-12" />
-          <Skeleton className="h-6 w-[300px] mb-12" />
-          <Skeleton className="h-6 w-[300px] mb-12" />
+          <Skeleton className="h-12 w-1/2 mb-5" />
+          <Skeleton className="h-12 w-1/2 mb-5" />
+          <div className="grid grid-cols-1 grid-rows-6 sm:grid-cols-2 sm:grid-rows-3 md:max-lg:grid-cols-3 md:max-lg:grid-rows-2 gap-5 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg">
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+          </div>
         </>
       ) : (
         <>

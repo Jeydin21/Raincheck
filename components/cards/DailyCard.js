@@ -8,7 +8,16 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 function DailyCard({ dailyData, loading }) {
   if (!dailyData || !dailyData.hourly) {
-    return <Skeleton className="h-20 w-[300px] mb-12" />;
+    return (
+      <>
+        <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg w-full h-full overflow-hidden">
+          <Skeleton className="h-8 w-[300px] mb-5" />
+          <Skeleton className="h-52 w-full mb-5" />
+          <Skeleton className="h-20 w-full mb-5" />
+        </div>
+      </>
+
+    );
   }
 
   const chartData = {
@@ -41,7 +50,11 @@ function DailyCard({ dailyData, loading }) {
   return (
     <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-5 shadow-lg w-full h-full overflow-hidden">
       {loading ? (
-        <Skeleton className="h-20 w-[300px] mb-12" />
+        <>
+          <Skeleton className="h-8 w-[300px] mb-5" />
+          <Skeleton className="h-52 w-full mb-5" />
+          <Skeleton className="h-20 w-full mb-5" />
+        </>
       ) : (
         <>
           <h1 className="md:text-2xl font-extrabold text-glow mb-1">
