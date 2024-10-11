@@ -83,7 +83,7 @@ export default function Home() {
           </p>
 
           <form onSubmit={handleSubmit} className="flex justify-center mb-8">
-            <div className="flex w-full max-w-sm items-center space-x-2">
+            <div className="flex flex-col md:flex-row w-full max-w-sm items-center space-x-2 max-md:space-y-2">
               <Select
                 className="w-full text-black"
                 placeholder="Enter a city name..."
